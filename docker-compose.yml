@@ -1,0 +1,12 @@
+services:
+  backend:
+    build:
+      context: .
+    container_name: shorten-url-be
+    environment:
+      - ENV=Quality
+      - QUALITY_DB=shorten-url
+      - QUALITY_DB_USERNAME=mysql
+      - QUALITY_DB_PW=password123@
+    ports:
+      - 8080:8080

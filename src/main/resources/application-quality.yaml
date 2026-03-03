@@ -2,9 +2,9 @@ spring:
   application:
     name: shorten-url-be
   datasource:
-    url: jdbc:mysql://quality:3306/shorten-url?allowPublicKeyRetrieval=true&useSSL=false
-    username: quality
-    password: quality
+    url: jdbc:mysql://quality:3306/${QUALITY_DB}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${QUALITY_DB_USERNAME}
+    password: ${QUALITY_DB_PW}
   jpa:
     hibernate:
       ddl-auto: update
