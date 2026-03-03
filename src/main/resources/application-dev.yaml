@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: shorten-url-be
+  datasource:
+    url: jdbc:mysql://localhost:3306/shorten-url?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+snowflake:
+  data-center-id: 1
+  worker-id: 1
