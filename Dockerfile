@@ -1,6 +1,7 @@
 # -------- Build Stage --------
 FROM maven:3.8.5-eclipse-temurin-17 AS builder
 WORKDIR /app
+
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
@@ -13,5 +14,4 @@ WORKDIR /app
 EXPOSE 8080
 
 COPY --from=builder /app/target/*.jar app.jar
-
 ENTRYPOINT ["java","-jar","app.jar"]
