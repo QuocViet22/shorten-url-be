@@ -7,6 +7,7 @@ import com.shorten_url.models.UrlDto;
 import com.shorten_url.repositories.ShortenUrlRepository;
 import com.shorten_url.services.ShortenUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +22,9 @@ public class ShortenUrlImpl implements ShortenUrlService {
     @Autowired
     private Base62Converter base62Converter;
 
+    @Value("spring.application.server-url")
+    private String serverUrl;
+
     @Override
     public UrlDto createShortenUrl(UrlDto rawUrlData) {
         // Generate unique id
@@ -31,7 +35,7 @@ public class ShortenUrlImpl implements ShortenUrlService {
         shortenUrlRepository.save(newShortedUrl);
         var shortenUrl = shortenUrlRepository.findById(newId)
                         .orElseThrow(() -> new RuntimeException("URL not found"));
-        var shortenUrlData = "http://localhost:8080/shorten-urls/" + shortenUrl.getShortUrl();
+        var shortenUrlData = serverUrl + "/shorten-urls/" + shortenUrl.getShortUrl();
         return new UrlDto(shortenUrl.getLongUrl(), shortenUrlData);
     }
 
