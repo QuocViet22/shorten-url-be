@@ -22,7 +22,7 @@ public class ShortenUrlImpl implements ShortenUrlService {
     @Autowired
     private Base62Converter base62Converter;
 
-    @Value("spring.application.server-url")
+    @Value("${spring.application.server-url}")
     private String serverUrl;
 
     @Override
@@ -34,7 +34,7 @@ public class ShortenUrlImpl implements ShortenUrlService {
         var newShortedUrl = new Url(newId, base62Id, rawUrlData.longUrl);
         shortenUrlRepository.save(newShortedUrl);
         var shortenUrl = shortenUrlRepository.findById(newId)
-                        .orElseThrow(() -> new RuntimeException("URL not found"));
+                .orElseThrow(() -> new RuntimeException("URL not found"));
         var shortenUrlData = serverUrl + "/shorten-urls/" + shortenUrl.getShortUrl();
         return new UrlDto(shortenUrl.getLongUrl(), shortenUrlData);
     }
