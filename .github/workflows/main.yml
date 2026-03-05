@@ -24,6 +24,6 @@ jobs:
           git pull origin quality
           git status
           docker rm -f shorten-url-be-app
-          docker build --secret id=ENV,env=${{ secrets.ENV }} --secret id=QUALITY_DB,env=${{ secrets.QUALITY_DB }} --secret id=QUALITY_DB_USERNAME,env=${{ secrets.QUALITY_DB_USERNAME }} --secret id=QUALITY_DB_PW,env=${{ secrets.QUALITY_DB_PW }} --secret id=QUALITY_DB_HOST,env=${{ secrets.QUALITY_DB_HOST }} -t shorten-url-be:quality .
-          docker run -it -d -p 8080:8080 --name shorten-url-be-app shorten-url-be:quality
+          docker build -t shorten-url-be:quality .
+          docker run -it -d -e ENV=${{ secrets.ENV }} -e QUALITY_DB=${{ secrets.QUALITY_DB }} -e QUALITY_DB_USERNAME=${{ secrets.QUALITY_DB_USERNAME }} -e QUALITY_DB_PW=${{ secrets.QUALITY_DB_PW }} -e QUALITY_DB_HOST=${{ secrets.QUALITY_DB_HOST }} -p 8080:8080 --name shorten-url-be-app shorten-url-be:quality
           
