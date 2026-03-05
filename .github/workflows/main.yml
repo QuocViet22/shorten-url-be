@@ -3,7 +3,7 @@ name: SSH into VPS and deploy
 on:
   push:
     branches:
-      - main
+      - quality
 
 jobs:
   deploy:
