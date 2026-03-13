@@ -1,7 +1,7 @@
 spring:
   application:
     name: shorten-url-be
-    server-url: https://ziplink-api.viethq.tech/
+    server-url: https://ziplink.viethq.tech/
   datasource:
     url: jdbc:mysql://${QUALITY_DB_HOST}:3306/${QUALITY_DB}?allowPublicKeyRetrieval=true&useSSL=false
     username: ${QUALITY_DB_USERNAME}
