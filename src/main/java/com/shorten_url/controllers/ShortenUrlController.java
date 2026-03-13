@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-@RequestMapping("/shorten-urls")
+@RequestMapping("/api")
 public class ShortenUrlController {
 
     @Autowired

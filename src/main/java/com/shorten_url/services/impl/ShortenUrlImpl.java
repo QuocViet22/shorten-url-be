@@ -35,7 +35,7 @@ public class ShortenUrlImpl implements ShortenUrlService {
         shortenUrlRepository.save(newShortedUrl);
         var shortenUrl = shortenUrlRepository.findById(newId)
                 .orElseThrow(() -> new RuntimeException("URL not found"));
-        var shortenUrlData = serverUrl + "/shorten-urls/" + shortenUrl.getShortUrl();
+        var shortenUrlData = serverUrl + shortenUrl.getShortUrl();
         return new UrlDto(shortenUrl.getLongUrl(), shortenUrlData);
     }
 
