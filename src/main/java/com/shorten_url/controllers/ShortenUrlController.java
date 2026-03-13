@@ -20,7 +20,7 @@ public class ShortenUrlController {
 
     private static final Logger logger = LoggerFactory.getLogger(ShortenUrlController.class);
 
-    @PostMapping
+    @PostMapping("/url")
     public ResponseEntity createShortenUrl(@RequestBody UrlDto rawUrlData) {
         try {
             var data = shortenUrlService.createShortenUrl(rawUrlData);
