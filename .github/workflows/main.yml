@@ -20,7 +20,7 @@ jobs:
         port: 22
         script: |
           cd ..
-          cd shorten-url-app/shorten-url-be
+          cd deployed-apps/shorten-url-be
           git pull origin quality
           git status
           docker rm -f shorten-url-be-app
