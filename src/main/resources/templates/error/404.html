@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Page Not Found | 404</title>
+    <style>
+        /* Modern Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* The Big Numbers */
+        h1 {
+            font-size: 10rem;
+            font-weight: 900;
+            margin: 0;
+            color: #2d3436;
+            line-height: 1;
+            letter-spacing: -5px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #636e72;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #b2bec3;
+            margin-bottom: 30px;
+        }
+
+        /* The Redirect Button */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #00b894;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #00a887;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Simple Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .icon {
+            font-size: 4rem;
+            animation: float 4s ease-in-out infinite;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="icon">🚀</div>
+    <h1>404</h1>
+    <h2>Lost in Space?</h2>
+    <p>The page you are looking for doesn't exist or has been moved.</p>
+
+    <a class="btn" href="https://ziplink.viethq.tech">Return</a>
+</div>
+
+</body>
+</html>

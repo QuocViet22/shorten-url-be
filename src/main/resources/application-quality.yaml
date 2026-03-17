@@ -15,3 +15,8 @@ spring:
 snowflake:
   data-center-id: 1
   worker-id: 1
+
+server:
+  error:
+    whitelabel:
+      enabled: false
