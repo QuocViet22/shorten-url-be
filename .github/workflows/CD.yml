@@ -6,7 +6,7 @@ on:
       - quality
 
 jobs:
-  deploy:
+  CD-job:
     runs-on: ubuntu-latest
     name: Deploy over SSH
 

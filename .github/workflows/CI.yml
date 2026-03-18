@@ -1,0 +1,23 @@
+name: SSH into VPS and deploy
+
+on:
+  push:
+    pull_request:
+      - quality
+
+jobs:
+  CI-job:
+    runs-on: ubuntu-latest
+    name: Running Unit tests
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run the Maven verify phase
+        run: mvn --batch-mode --update-snapshots verify
+
+
+          
