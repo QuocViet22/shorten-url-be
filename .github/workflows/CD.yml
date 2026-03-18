@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy over SSH
 
+    env:
+      ENV: ${{ secrets.ENV }}
+      QUALITY_DB: ${{ secrets.QUALITY_DB }}
+      QUALITY_DB_USERNAME: ${{ secrets.QUALITY_DB_USERNAME }}
+      QUALITY_DB_PW: ${{ secrets.QUALITY_DB_PW }}
+      QUALITY_DB_HOST: ${{ secrets.QUALITY_DB_HOST }}
+
     steps:
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
@@ -26,5 +33,5 @@ jobs:
           docker rm -f shorten-url-be-app
           docker rmi shorten-url-be:quality
           docker build -t shorten-url-be:quality .
-          docker run -it -d -e ENV=${{ secrets.ENV }} -e QUALITY_DB=${{ secrets.QUALITY_DB }} -e QUALITY_DB_USERNAME=${{ secrets.QUALITY_DB_USERNAME }} -e QUALITY_DB_PW=${{ secrets.QUALITY_DB_PW }} -e QUALITY_DB_HOST=${{ secrets.QUALITY_DB_HOST }} -p 8080:8080 --name shorten-url-be-app shorten-url-be:quality
+          docker run -it -d -p 8080:8080 --name shorten-url-be-app shorten-url-be:quality
           
