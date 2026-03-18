@@ -1,0 +1,30 @@
+name: SSH into VPS and deploy
+
+on:
+  push:
+    pull_request:
+      - quality
+
+jobs:
+  CI-job:
+    runs-on: ubuntu-latest
+    name: Running Unit tests
+
+    env:
+      ENV: ${{ secrets.ENV }}
+      QUALITY_DB: ${{ secrets.QUALITY_DB }}
+      QUALITY_DB_USERNAME: ${{ secrets.QUALITY_DB_USERNAME }}
+      QUALITY_DB_PW: ${{ secrets.QUALITY_DB_PW }}
+      QUALITY_DB_HOST: ${{ secrets.QUALITY_DB_HOST }}
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run the Maven verify phase
+        run: mvn --batch-mode --update-snapshots verify
+
+
+          
