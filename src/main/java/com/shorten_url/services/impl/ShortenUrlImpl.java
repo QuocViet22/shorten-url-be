@@ -27,6 +27,9 @@ public class ShortenUrlImpl implements ShortenUrlService {
 
     @Override
     public UrlDto createShortenUrl(UrlDto rawUrlData) {
+        if (rawUrlData.getLongUrl() != null && rawUrlData.getLongUrl().length() > 10) {
+            throw new IllegalArgumentException("URL is too long");
+        }
         // Generate unique id
         var newId = snowflakeIdGenerator.generateId();
         var base62Id = base62Converter.encode(newId);
@@ -34,7 +37,7 @@ public class ShortenUrlImpl implements ShortenUrlService {
         var newShortedUrl = new Url(newId, base62Id, rawUrlData.longUrl);
         shortenUrlRepository.save(newShortedUrl);
         var shortenUrl = shortenUrlRepository.findById(newId)
-                .orElseThrow(() -> new RuntimeException("URL not found"));
+                .orElseThrow(() -> new IllegalArgumentException("URL not found"));
         var shortenUrlData = serverUrl + shortenUrl.getShortUrl();
         return new UrlDto(shortenUrl.getLongUrl(), shortenUrlData);
     }
